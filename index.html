@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Mail for Dr. Baxter</title>
+
+    <!-- Styles -->
+    <style>
+      body {
+     background-color: #7bcbf0;
+     text-align: center;
+     font-family: Arial, sans-serif;
+     margin-top: 50px;
+     /* Remove overflow: hidden */
+     /* overflow: hidden; */
+     position: relative; /* needed for absolute-positioned NO button */
+    }
+
+      h1 {
+        color: #8efd69;
+        font-size: 40px;
+      }
+
+      img {
+        width: 250px;
+        border-radius: 20px;
+        margin: 20px 0;
+      }
+
+      button {
+        padding: 15px 30px;
+        font-size: 18px;
+        border-radius: 10px;
+        background-color: #e370b9;
+        border: none;
+        cursor: pointer;
+        margin: 10px;
+        position: relative;
+      }
+
+      #noBtn {
+        position: absolute;
+      }
+
+      #surprise img {
+        margin-top: 15px;
+        border-radius: 20px;
+      }
+    </style>
+
+    <!-- Confetti library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <h1>Hello there!</h1>
+    <h2>Who's the best supervisor??</h2>
+
+    <button id="yesBtn">Me!!!</button>
+    <button id="noBtn">What?</button>
+
+    <div id="surprise" style="margin-top: 20px;"></div>
+
+    <!-- Scripts -->
+    <script>
+      // YES button behavior
+      const yesBtn = document.getElementById("yesBtn");
+      const surpriseDiv = document.getElementById("surprise");
+
+      yesBtn.addEventListener("click", () => {
+        // Add surprise text + images
+        surpriseDiv.innerHTML = `
+          <h1>Yay, correct answer!</h1>
+          <p>and last year I got this super super cool thingy from that guy</p>
+          <img src="/Users/isabe/Documents/Stuff/Pipette_card/Fotos/Pipette.png" width="300">
+          <h1>now its out of my drawer and I can brag about it</h1>
+          <img src="/Users/isabe/Documents/Stuff/Pipette_card/Fotos/Workspace.png" width="500">
+          <img src="/Users/isabe/Documents/Stuff/DrCaro_Card/Fotos/thumbs-up-are-you-okay.gif" width="300">
+          <h2>🧬🧬🧬🧬🧬🧬🧬🧬🧬🧬🔬🧬🧬🧬🧬</h2>
+          <p>Its huuuuge, I love it so much!!!! :)</p>
+        `;
+
+        // Confetti effect
+        confetti({
+          particleCount: 150,
+          spread: 70,
+          origin: { y: 0.6 }
+        });
+      });
+
+      // NO button behavior
+      const noBtn = document.getElementById("noBtn");
+
+      noBtn.addEventListener("mouseover", () => {
+        const x = Math.random() * (window.innerWidth - 120);
+        const y = Math.random() * (window.innerHeight - 60);
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
+      });
+    </script>
+
+  </body>
+</html>
